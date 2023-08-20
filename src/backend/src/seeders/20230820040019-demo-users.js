@@ -1,14 +1,14 @@
 module.exports = {
   up: async (queryInterface, _Sequelize) => {
-    await queryInterface.bulkInsert('Users', [
+    await queryInterface.bulkInsert('users', [
       {
         name: 'Deborah Cristina',
         email: 'cris@teste.com',
         cpf: '12345678901',
         phone: '11910090807',
         status: 'Ativo',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         name: 'Priscila Resende Nascimento',
@@ -16,8 +16,8 @@ module.exports = {
         cpf: '11109876543',
         phone: '11901020304',
         status: 'Inativo',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         name: 'Leonardo Prado',
@@ -25,8 +25,8 @@ module.exports = {
         cpf: '11010203040',
         phone: '11903040506',
         status: 'Aguardando ativação',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         name: 'Jonathan Verdeli',
@@ -34,13 +34,13 @@ module.exports = {
         cpf: '11123456789',
         phone: '11998765432',
         status: 'Desativado',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
-      ], { timestamps: false });
+      ], { });
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('users', null, {});
   },
 };

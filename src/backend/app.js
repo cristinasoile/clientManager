@@ -1,12 +1,15 @@
 // import {openDb}  from './configDB.js';
-
+// openDb()
 const express = require('express');
+const cors = require('cors');
+const usersRouter = require('./src/routes/UsersRoutes');
 
 const app = express()
 
 app.use(express.json())
+app.use(cors());
 
-// openDb()
+app.use('/users', usersRouter);
 
 const port = 3000
 
