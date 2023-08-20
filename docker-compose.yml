@@ -1,0 +1,40 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: senha
+      MYSQL_DATABASE: teste_uol
+    ports:
+      - "3306:3306"
+    volumes:
+      # - mysql_data:/var/lib/mysql
+      - ./src/build:/docker-entrypoint-initdb.d
+
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    container_name: backend_container
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mysql
+    volumes:
+      - ./src/backend:/app
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
